@@ -13,4 +13,26 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.get('/:productID', (req, res, next) => {
+    let id = req.params.productID;
+    res.status(200).json({
+        message: `You get information of productID ${id}`
+    });
+});
+
+router.patch('/:productID', (req, res, next) => {
+    let id = req.params.productID;
+    res.status(200).json({
+        message: `You updated information of productID ${id}`
+    });
+});
+
+router.delete('/:productID', (req, res, next) => {
+    let id = req.params.productID;
+    res.status(200).json({
+        message: `You deleted information of productID ${id}`
+    });
+});
+
+
 module.exports = router;
