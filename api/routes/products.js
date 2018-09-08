@@ -4,8 +4,20 @@ const mongoose = require('mongoose');
 const Product = require('../models/product');
 
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'Handling GET request to/products'
+    Product.find().exec().then(doc => {
+        console.log(doc);
+        if (doc.length >= 0) {
+            res.status(200).json(doc);
+        } else {
+            res.status(404).json({
+                message: 'No entries found !'
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
 });
 
@@ -60,16 +72,39 @@ router.get('/:productID', (req, res, next) => {
 
 router.patch('/:productID', (req, res, next) => {
     let id = req.params.productID;
-    res.status(200).json({
-        message: `You updated information of productID ${id}`
-    });
+    const updateOps = {};
+    for (const key of Object.keys(req.body)) {
+        updateOps[key] = req.body[key]
+      }
+    Product.update({
+        _id: id
+    }, {
+        $set: {
+            updateOps
+        }
+    }).exec().then(result => {
+        res.status(200).json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });;
 });
 
 router.delete('/:productID', (req, res, next) => {
     let id = req.params.productID;
-    res.status(200).json({
-        message: `You deleted information of productID ${id}`
-    });
+    Product.remove({
+            _id: id
+        }).exec()
+        .then(result => {
+            res.status(200).json(result);
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });;
 });
 
 
