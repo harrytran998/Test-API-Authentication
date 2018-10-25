@@ -1,34 +1,9 @@
 {
-  "name": "rest-shop",
+  "name": "Test-API-Authentication",
   "version": "1.0.0",
-  "description": "A NodeJs restful API",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jetaimefrc/node-rest-shop.git"
-  },
-  "keywords": [
-    "node",
-    "restful",
-    "api"
-  ],
-  "author": "Tran Quang Nhat",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jetaimefrc/node-rest-shop/issues"
-  },
-  "homepage": "https://github.com/jetaimefrc/node-rest-shop#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mongoose": "^5.2.13",
-    "morgan": "^1.9.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
-  }
+  "main": "app.jjs",
+  "repository": "https://github.com/jetaimefrc/Test-API-Authentication.git",
+  "author": "NhatTQ <jetaimefrc@gmail.com>",
+  "license": "MIT",
+  "private": false
 }
