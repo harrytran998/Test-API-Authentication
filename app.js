@@ -1,4 +1,19 @@
-const app = require('./app');
-const port = process.env.PORT || 3000;
+import express from 'express'
+import morgan from 'morgan'
+import bodyParser from 'body-parser'
+import dotenv from 'dotenv';
 
-app.listen(port, () => console.log('Example app listening on port 3000!'))
+dotenv.config()
+const app = express()
+
+//middleware
+app.use(morgan('combined'))
+app.use(bodyParser.json())
+
+//routes
+
+
+//start the server
+app.listen(process.env.PORT, () => {
+  console.log(`App listen at port ${process.env.PORT}`);
+})
